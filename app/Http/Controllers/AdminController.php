@@ -42,7 +42,7 @@ class AdminController extends Controller
 
         if ($request->hasFile('image_file')) {
             $path = $request->file('image_file')->store('products', 'public');
-            $data['image_url'] = Storage::url($path);
+            $data['image_url'] = '/storage/' . $path;
         }
 
         $specs = null;
@@ -57,7 +57,7 @@ class AdminController extends Controller
         if ($request->hasFile('extra_images')) {
             foreach ($request->file('extra_images') as $file) {
                 $path = $file->store('products', 'public');
-                $images[] = Storage::url($path);
+                $images[] = '/storage/' . $path;
             }
         }
         $data['images'] = $images;
@@ -82,7 +82,7 @@ class AdminController extends Controller
 
         if ($request->hasFile('image_file')) {
             $path = $request->file('image_file')->store('products', 'public');
-            $data['image_url'] = Storage::url($path);
+            $data['image_url'] = '/storage/' . $path;
         }
 
         $specs = null;
@@ -96,7 +96,7 @@ class AdminController extends Controller
         if ($request->hasFile('extra_images')) {
             foreach ($request->file('extra_images') as $file) {
                 $path = $file->store('products', 'public');
-                $images[] = Storage::url($path);
+                $images[] = '/storage/' . $path;
             }
         }
         $data['images'] = $images;
@@ -134,7 +134,7 @@ class AdminController extends Controller
 
         if ($request->hasFile('image_file')) {
             $path = $request->file('image_file')->store('blog', 'public');
-            $data['image_url'] = Storage::url($path);
+            $data['image_url'] = '/storage/' . $path;
         }
 
         BlogPost::create($data);
@@ -160,7 +160,7 @@ class AdminController extends Controller
 
         if ($request->hasFile('image_file')) {
             $path = $request->file('image_file')->store('blog', 'public');
-            $data['image_url'] = Storage::url($path);
+            $data['image_url'] = '/storage/' . $path;
         }
 
         $post->update($data);
@@ -190,7 +190,7 @@ class AdminController extends Controller
 
         if ($request->hasFile('image_file')) {
             $path = $request->file('image_file')->store('gallery', 'public');
-            $data['image_url'] = Storage::url($path);
+            $data['image_url'] = '/storage/' . $path;
         }
 
         $data['image_url']  = $data['image_url']  ?? '';
@@ -218,7 +218,7 @@ class AdminController extends Controller
 
         if ($request->hasFile('image_file')) {
             $path = $request->file('image_file')->store('gallery', 'public');
-            $data['image_url'] = Storage::url($path);
+            $data['image_url'] = '/storage/' . $path;
         }
 
         $data['image_url']  = $data['image_url']  ?? $galleryImage->image_url  ?? '';
