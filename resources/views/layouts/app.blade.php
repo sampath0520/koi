@@ -12,7 +12,7 @@
     {{-- Navbar --}}
     <style>
         #site-logo { height: 20.5rem; margin-top: 46px; margin-left: -114px; width: auto; }
-        @media (max-width: 767px) {
+        @@media (max-width: 767px) {
             #site-logo { height: 10rem; margin-top: 23px; margin-left: -57px; }
         }
     </style>
