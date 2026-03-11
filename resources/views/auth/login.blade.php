@@ -18,7 +18,7 @@
         {{-- Logo --}}
         <div class="flex flex-col items-center mb-8">
             <a href="{{ url('/') }}" class="flex items-center gap-3 mb-2">
-                <img src="{{ asset('images/koi_logo.png') }}" alt="Koi Majesty" class="h-12 w-auto">
+                <img src="{{ asset('images/koi_logo.png') }}" alt="Koi Majesty" class="h-20 w-auto">
             </a>
             <p class="text-sm text-muted-foreground font-display tracking-wide">Admin Panel</p>
         </div>

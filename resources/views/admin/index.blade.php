@@ -33,7 +33,7 @@
     <header class="border-b border-border bg-card/50 backdrop-blur-lg sticky top-0 z-50">
         <div class="container mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <img src="{{ asset('images/koi_logo.png') }}" alt="Koi Majesty" class="h-9 w-auto">
+                <img src="{{ asset('images/koi_logo.png') }}" alt="Koi Majesty" class="h-14 w-auto">
                 <span class="font-display font-bold text-foreground">Admin Panel</span>
             </div>
             <div class="flex items-center gap-3">
