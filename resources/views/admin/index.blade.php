@@ -114,7 +114,7 @@
                             </span>
                         </div>
                         <p class="text-sm text-muted-foreground">
-                            {{ \App\Models\Product::$categories[$product->category] }}
+                            {{ App\Models\Product::$categories[$product->category] ?? $product->category }}
                             @if($product->price) &bull; Rs. {{ number_format($product->price) }} @endif
                         </p>
                     </div>
