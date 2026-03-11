@@ -35,7 +35,7 @@ php artisan db:seed --force
 
 # Create storage symlink
 echo "🔗  Creating storage link..."
-php artisan storage:link || true
+php artisan storage:link --force || true
 
 # Cache config & routes for production performance
 if [ "$APP_ENV" = "production" ]; then
