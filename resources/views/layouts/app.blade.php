@@ -11,9 +11,9 @@
 
     {{-- Navbar --}}
     <nav class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
-        <div class="container mx-auto flex items-center justify-between h-16 px-4">
+        <div class="container mx-auto flex items-center justify-between h-24 px-4">
             <a href="{{ url('/') }}" class="flex items-center gap-2 select-none">
-                <img src="{{ asset('images/koi_logo.png') }}" alt="Koi Majesty" class="h-16 w-auto">
+                <img src="{{ asset('images/koi_logo.png') }}" alt="Koi Majesty" class="h-20 w-auto">
             </a>
 
             {{-- Desktop nav --}}
