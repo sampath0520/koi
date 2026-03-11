@@ -38,7 +38,7 @@ class Product extends Model
 
     public static array $categoryDescriptions = [
         'pond_pumps'    => 'High-performance pumps for crystal-clear water circulation and waterfalls.',
-        'pond_aerators' => 'Keep your pond oxygenated for healthier, happier koi fish.',
+        'pond_aerators' => 'Keep your pond oxygenated for healthier, happier pond fish.',
         'pond_filters'  => 'Advanced filtration systems for pristine water quality year-round.',
         'accessories'   => 'Essential tools, test kits, and accessories for complete pond care.',
     ];

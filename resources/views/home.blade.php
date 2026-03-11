@@ -507,7 +507,7 @@
             @php
             $categories = [
                 ['slug' => 'pond_pumps',    'label' => 'Pond Pumps',    'desc' => 'High-performance pumps for crystal-clear water circulation and waterfalls.', 'img' => 'product-pumps.jpg'],
-                ['slug' => 'pond_aerators', 'label' => 'Pond Aerators', 'desc' => 'Keep your pond oxygenated for healthier, happier koi fish.',                  'img' => 'product-aerators.jpg'],
+                ['slug' => 'pond_aerators', 'label' => 'Pond Aerators', 'desc' => 'Keep your pond oxygenated for healthier, happier pond fish.',                  'img' => 'product-aerators.jpg'],
                 ['slug' => 'pond_filters',  'label' => 'Pond Filters',  'desc' => 'Advanced filtration systems for pristine water quality year-round.',            'img' => 'product-filters.jpg'],
                 ['slug' => 'accessories',   'label' => 'Accessories',   'desc' => 'Essential tools, test kits, and accessories for complete pond care.',            'img' => 'product-accessories.jpg'],
             ];
