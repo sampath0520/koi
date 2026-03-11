@@ -18,16 +18,7 @@
         {{-- Logo --}}
         <div class="flex flex-col items-center mb-8">
             <a href="{{ url('/') }}" class="flex items-center gap-3 mb-2">
-                <svg viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-12 w-auto">
-                    <ellipse cx="26" cy="24" rx="15" ry="9" fill="#F5A623" transform="rotate(-8 26 24)"/>
-                    <ellipse cx="30" cy="22" rx="6.5" ry="4" fill="#D9402A" opacity="0.75" transform="rotate(-8 30 22)"/>
-                    <path d="M11 24 L4 14 L6 24 L4 34 Z" fill="#F5A623" opacity="0.9"/>
-                    <path d="M21 30 Q16 37 21 39 Q26 34 24 30Z" fill="#E8891A" opacity="0.7"/>
-                    <path d="M22 13 Q27 6 33 13" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                    <circle cx="39" cy="21" r="2.8" fill="white"/>
-                    <circle cx="39.7" cy="21" r="1.4" fill="#1a2c2c"/>
-                    <text x="54" y="31" font-family="Outfit, sans-serif" font-weight="700" font-size="22" fill="#F5A623" letter-spacing="0.5">Koi Majesty</text>
-                </svg>
+                <img src="{{ asset('images/koi_logo.png') }}" alt="Koi Majesty" class="h-12 w-auto">
             </a>
             <p class="text-sm text-muted-foreground font-display tracking-wide">Admin Panel</p>
         </div>

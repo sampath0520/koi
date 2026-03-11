@@ -33,13 +33,7 @@
     <header class="border-b border-border bg-card/50 backdrop-blur-lg sticky top-0 z-50">
         <div class="container mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-9 w-auto" aria-label="Koi Majesty">
-                    <ellipse cx="22" cy="22" rx="13" ry="8" fill="#F5A623" transform="rotate(-8 22 22)"/>
-                    <ellipse cx="25" cy="20" rx="5.5" ry="3.5" fill="#D9402A" opacity="0.75" transform="rotate(-8 25 20)"/>
-                    <path d="M9 22 L3 14 L5 22 L3 30 Z" fill="#F5A623" opacity="0.9"/>
-                    <path d="M19 14 Q23 8 28 14" stroke="#F5A623" stroke-width="2" stroke-linecap="round" fill="none"/>
-                    <circle cx="33" cy="20" r="2.2" fill="white"/><circle cx="33.6" cy="20" r="1.1" fill="#1a2c2c"/>
-                </svg>
+                <img src="{{ asset('images/koi_logo.png') }}" alt="Koi Majesty" class="h-9 w-auto">
                 <span class="font-display font-bold text-foreground">Admin Panel</span>
             </div>
             <div class="flex items-center gap-3">

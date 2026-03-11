@@ -13,16 +13,7 @@
     <nav class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
         <div class="container mx-auto flex items-center justify-between h-16 px-4">
             <a href="{{ url('/') }}" class="flex items-center gap-2 select-none">
-                <svg viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-10 w-auto" aria-label="Koi Majesty">
-                    <ellipse cx="22" cy="20" rx="13" ry="8" fill="#F5A623" transform="rotate(-8 22 20)"/>
-                    <ellipse cx="25" cy="18" rx="5.5" ry="3.5" fill="#D9402A" opacity="0.75" transform="rotate(-8 25 18)"/>
-                    <path d="M9 20 L3 12 L5 20 L3 28 Z" fill="#F5A623" opacity="0.9"/>
-                    <path d="M18 24 Q14 30 18 32 Q22 28 20 24Z" fill="#E8891A" opacity="0.7"/>
-                    <path d="M19 12 Q23 6 28 12" stroke="#F5A623" stroke-width="2" stroke-linecap="round" fill="none"/>
-                    <circle cx="33" cy="18" r="2.2" fill="white"/>
-                    <circle cx="33.6" cy="18" r="1.1" fill="#1a2c2c"/>
-                    <text x="48" y="26" font-family="Outfit, sans-serif" font-weight="700" font-size="18" fill="#F5A623" letter-spacing="0.5">Koi Majesty</text>
-                </svg>
+                <img src="{{ asset('images/koi_logo.png') }}" alt="Koi Majesty" class="h-10 w-auto">
             </a>
 
             {{-- Desktop nav --}}
@@ -69,16 +60,7 @@
     <footer class="py-8 border-t border-border bg-background">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
             <a href="{{ url('/') }}" class="flex items-center gap-2 select-none">
-                <svg viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-8 w-auto" aria-label="Koi Majesty">
-                    <ellipse cx="22" cy="20" rx="13" ry="8" fill="#F5A623" transform="rotate(-8 22 20)"/>
-                    <ellipse cx="25" cy="18" rx="5.5" ry="3.5" fill="#D9402A" opacity="0.75" transform="rotate(-8 25 18)"/>
-                    <path d="M9 20 L3 12 L5 20 L3 28 Z" fill="#F5A623" opacity="0.9"/>
-                    <path d="M18 24 Q14 30 18 32 Q22 28 20 24Z" fill="#E8891A" opacity="0.7"/>
-                    <path d="M19 12 Q23 6 28 12" stroke="#F5A623" stroke-width="2" stroke-linecap="round" fill="none"/>
-                    <circle cx="33" cy="18" r="2.2" fill="white"/>
-                    <circle cx="33.6" cy="18" r="1.1" fill="#1a2c2c"/>
-                    <text x="48" y="26" font-family="Outfit, sans-serif" font-weight="700" font-size="18" fill="#F5A623" letter-spacing="0.5">Koi Majesty</text>
-                </svg>
+                <img src="{{ asset('images/koi_logo.png') }}" alt="Koi Majesty" class="h-8 w-auto">
             </a>
             <p class="text-sm text-muted-foreground">© {{ date('Y') }} Koi Majesty. All rights reserved.</p>
             <div class="flex gap-4 text-sm text-muted-foreground">
