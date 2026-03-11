@@ -10,13 +10,16 @@
 <body class="bg-background text-foreground font-body antialiased">
 
     {{-- Navbar --}}
+    <style>
+        #site-logo { height: 20.5rem; margin-top: 46px; margin-left: -114px; width: auto; }
+        @media (max-width: 767px) {
+            #site-logo { height: 10rem; margin-top: 23px; margin-left: -57px; }
+        }
+    </style>
     <nav class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border overflow-visible">
         <div class="container mx-auto flex items-center justify-between h-24 px-4 overflow-visible">
             <a href="{{ url('/') }}" class="flex items-center gap-2 select-none overflow-visible">
-                <img src="{{ asset('images/koi_logo.png') }}" alt="Koi Majesty"
-                     class="w-auto
-                            h-[10rem] mt-[23px] -ml-[57px]
-                            md:h-[20.5rem] md:mt-[46px] md:-ml-[114px]">
+                <img id="site-logo" src="{{ asset('images/koi_logo.png') }}" alt="Koi Majesty">
             </a>
 
             {{-- Desktop nav --}}
