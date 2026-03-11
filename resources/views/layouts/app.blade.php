@@ -17,7 +17,7 @@
         }
     </style>
     <nav class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border overflow-visible">
-        <div class="container mx-auto flex items-center justify-between h-24 px-4 overflow-visible">
+        <div class="container mx-auto flex items-center justify-between px-4 overflow-visible" style="height:3rem;">
             <a href="{{ url('/') }}" class="flex items-center gap-2 select-none overflow-visible">
                 <img id="site-logo" src="{{ asset('images/koi_logo.png') }}" alt="Koi Majesty">
             </a>
@@ -65,9 +65,6 @@
     {{-- Footer --}}
     <footer class="py-8 border-t border-border bg-background">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="{{ url('/') }}" class="flex items-center gap-2 select-none">
-                <img src="{{ asset('images/koi_logo.png') }}" alt="Koi Majesty" class="h-14 w-auto">
-            </a>
             <p class="text-sm text-muted-foreground">© {{ date('Y') }} Koi Majesty. All rights reserved.</p>
             <div class="flex gap-4 text-sm text-muted-foreground">
                 <a href="{{ url('/') }}" class="hover:text-primary transition-colors">Home</a>
@@ -75,6 +72,7 @@
                 <a href="{{ url('/') }}#products" class="hover:text-primary transition-colors">Products</a>
                 <a href="{{ url('/') }}#contact" class="hover:text-primary transition-colors">Contact</a>
             </div>
+            <p class="text-sm text-muted-foreground">Designed and developed by <a href="https://www.facebook.com/profile.php?id=61586463676527" target="_blank" rel="noopener" class="hover:text-primary transition-colors font-medium">VYSEDO</a></p>
         </div>
     </footer>
 
