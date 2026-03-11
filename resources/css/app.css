@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 180 25% 10%;
+    --foreground: 180 10% 95%;
+
+    --card: 180 20% 14%;
+    --card-foreground: 180 10% 95%;
+
+    --popover: 180 20% 14%;
+    --popover-foreground: 180 10% 95%;
+
+    --primary: 35 95% 55%;
+    --primary-foreground: 180 25% 8%;
+
+    --secondary: 180 30% 18%;
+    --secondary-foreground: 180 10% 90%;
+
+    --muted: 180 20% 16%;
+    --muted-foreground: 180 10% 60%;
+
+    --accent: 5 80% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 180 15% 22%;
+    --input: 180 15% 22%;
+    --ring: 35 95% 55%;
+
+    --radius: 0.75rem;
+
+    --koi-gold: 35 95% 55%;
+    --koi-red: 358 80% 53%;
+    --koi-orange: 45 100% 50%;
+    --koi-teal: 175 40% 30%;
+    --koi-deep: 180 30% 8%;
+    --water: 185 45% 35%;
+    --water-light: 185 50% 45%;
+  }
+
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground antialiased; font-family: 'DM Sans', sans-serif; }
+  h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif; }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--koi-gold)), hsl(var(--koi-orange)));
+  }
+
+  .bg-water-gradient {
+    background: linear-gradient(180deg,
+      hsl(var(--koi-deep)),
+      hsl(var(--background)),
+      hsl(175 40% 30% / 0.3)
+    );
+  }
+
+  .bg-section-alt {
+    background: linear-gradient(180deg, hsl(var(--secondary)), hsl(var(--background)));
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 40px -10px hsl(var(--koi-gold) / 0.4);
+  }
+
+  .bg-koi-deep { background-color: hsl(var(--koi-deep)); }
+
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+}
+
+/* ── Hero entrance animations ────────────────────────────────────────────── */
+@keyframes heroFadeUp   { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:none; } }
+@keyframes heroFadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:none; } }
+@keyframes heroScaleIn  { from { opacity:0; transform:scale(0.92); }      to { opacity:1; transform:scale(1); } }
+@keyframes heroFadeIn   { from { opacity:0; }                              to { opacity:1; } }
+
+[data-hero]                       { opacity: 0; }
+[data-hero].hero-animate          { animation: heroFadeUp   0.7s cubic-bezier(.22,1,.36,1) both; }
+[data-hero="scale"].hero-animate  { animation: heroScaleIn  0.9s cubic-bezier(.22,1,.36,1) both; }
+[data-hero="fade"].hero-animate   { animation: heroFadeIn   0.6s ease both; }
+[data-hero="down"].hero-animate   { animation: heroFadeDown 0.6s ease both; }
+
+/* ── Scroll-triggered animations (whileInView equivalent) ───────────────── */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s cubic-bezier(.22,1,.36,1),
+              transform 0.65s cubic-bezier(.22,1,.36,1);
+}
+[data-animate="fade-left"] {
+  opacity: 0; transform: translateX(-30px);
+  transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+}
+[data-animate="fade-right"] {
+  opacity: 0; transform: translateX(30px);
+  transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+}
+[data-animate="scale-in"] {
+  opacity: 0; transform: scale(0.92);
+  transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+}
+[data-animate].in-view,
+[data-animate="fade-left"].in-view,
+[data-animate="fade-right"].in-view,
+[data-animate="scale-in"].in-view  { opacity: 1; transform: none; }
+
+/* stagger children get delays assigned by JS */
+
+/* ── Navbar scrolled shadow ──────────────────────────────────────────────── */
+nav.scrolled { box-shadow: 0 2px 24px hsl(180 30% 4% / 0.6); }
