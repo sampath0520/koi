@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\BlogPost;
 use App\Models\GalleryImage;
+use App\Models\ContactSubmission;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,7 +28,12 @@ class HomeController extends Controller
             'message' => 'required|string|max:5000',
         ]);
 
-        // TODO: wire up mail if needed
+        ContactSubmission::create($request->only('name', 'email', 'message'));
+
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json(['message' => 'Thank you! Your message has been received.']);
+        }
+
         return back()->with('success', 'Thank you! Your message has been received.');
     }
 }

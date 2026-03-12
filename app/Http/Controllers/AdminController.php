@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\BlogPost;
 use App\Models\GalleryImage;
+use App\Models\ContactSubmission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -21,8 +22,9 @@ class AdminController extends Controller
         $products      = Product::latest()->get();
         $posts         = BlogPost::latest()->get();
         $galleryImages = GalleryImage::orderBy('sort_order')->orderBy('id')->get();
+        $contacts      = ContactSubmission::latest()->get();
 
-        return view('admin.index', compact('products', 'posts', 'galleryImages'));
+        return view('admin.index', compact('products', 'posts', 'galleryImages', 'contacts'));
     }
 
     // ────────── Products ──────────
@@ -238,5 +240,21 @@ class AdminController extends Controller
         $galleryImage->delete();
 
         return redirect()->route('admin.index', ['tab' => 'gallery'])->with('success', 'Gallery image deleted.');
+    }
+
+    // ────────── Contact Submissions ──────────
+
+    public function markContactRead(ContactSubmission $submission)
+    {
+        $submission->update(['is_read' => true]);
+
+        return redirect()->route('admin.index', ['tab' => 'contacts'])->with('success', 'Message marked as read.');
+    }
+
+    public function destroyContact(ContactSubmission $submission)
+    {
+        $submission->delete();
+
+        return redirect()->route('admin.index', ['tab' => 'contacts'])->with('success', 'Message deleted.');
     }
 }

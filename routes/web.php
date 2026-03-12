@@ -41,4 +41,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::post('/gallery',                     [AdminController::class, 'storeGalleryImage'])->name('gallery.store');
     Route::put('/gallery/{galleryImage}',        [AdminController::class, 'updateGalleryImage'])->name('gallery.update');
     Route::delete('/gallery/{galleryImage}',     [AdminController::class, 'destroyGalleryImage'])->name('gallery.destroy');
+
+    Route::patch('/contacts/{submission}/read',  [AdminController::class, 'markContactRead'])->name('contacts.read');
+    Route::delete('/contacts/{submission}',      [AdminController::class, 'destroyContact'])->name('contacts.destroy');
 });

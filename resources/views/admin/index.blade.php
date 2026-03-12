@@ -72,6 +72,14 @@
                class="px-4 py-2 font-display text-sm font-medium transition-colors {{ $activeTab === 'gallery' ? 'border-b-2 border-primary text-primary' : 'text-muted-foreground hover:text-foreground' }}">
                 Gallery
             </a>
+            <a href="?tab=contacts"
+               class="relative px-4 py-2 font-display text-sm font-medium transition-colors {{ $activeTab === 'contacts' ? 'border-b-2 border-primary text-primary' : 'text-muted-foreground hover:text-foreground' }}">
+                Contacts
+                @php $unread = $contacts->where('is_read', false)->count(); @endphp
+                @if($unread > 0)
+                <span class="ml-1.5 inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary text-primary-foreground text-[10px] font-bold">{{ $unread }}</span>
+                @endif
+            </a>
         </div>
 
         {{-- ── PRODUCTS TAB ────────────────────────────────────────────── --}}
@@ -361,9 +369,61 @@
             </div>
         </div>
 
-        @endif
+        @elseif($activeTab === 'contacts')
+        <div>
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="font-display text-2xl font-bold text-foreground">
+                    Contact Messages
+                    @if($contacts->where('is_read', false)->count() > 0)
+                    <span class="ml-2 text-base font-medium text-muted-foreground">({{ $contacts->where('is_read', false)->count() }} unread)</span>
+                    @endif
+                </h2>
+            </div>
 
-    </main>
+            @if($contacts->isEmpty())
+            <p class="text-muted-foreground text-center py-12">No contact submissions yet.</p>
+            @else
+            <div class="space-y-3">
+                @foreach($contacts as $submission)
+                <div class="p-5 bg-card rounded-xl border {{ $submission->is_read ? 'border-border' : 'border-primary/40' }} transition-colors">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-2 flex-wrap mb-1">
+                                <span class="font-display font-semibold text-foreground">{{ $submission->name }}</span>
+                                @if(!$submission->is_read)
+                                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary/20 text-primary uppercase tracking-wide">New</span>
+                                @endif
+                                <span class="text-xs text-muted-foreground">{{ $submission->created_at->format('M d, Y · g:i A') }}</span>
+                            </div>
+                            <a href="mailto:{{ $submission->email }}" class="text-sm text-primary hover:underline">{{ $submission->email }}</a>
+                            <p class="mt-3 text-sm text-foreground leading-relaxed whitespace-pre-wrap">{{ $submission->message }}</p>
+                        </div>
+                        <div class="flex gap-2 flex-shrink-0">
+                            @if(!$submission->is_read)
+                            <form method="POST" action="{{ url('/admin/contacts/' . $submission->id . '/read') }}">
+                                @csrf @method('PATCH')
+                                <button type="submit" title="Mark as read"
+                                    class="p-2 rounded-lg hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground">
+                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                </button>
+                            </form>
+                            @endif
+                            <form method="POST" action="{{ url('/admin/contacts/' . $submission->id) }}" onsubmit="return confirm('Delete this message?')">
+                                @csrf @method('DELETE')
+                                <button type="submit" title="Delete"
+                                    class="p-2 rounded-lg hover:bg-destructive/10 transition-colors text-muted-foreground hover:text-destructive">
+                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            @endif
+        </div>
+
+        @endif
 
     <script>
     // ── Data store (keyed by id, populated server-side) ───────────────────────

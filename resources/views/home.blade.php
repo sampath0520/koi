@@ -541,12 +541,6 @@
             </h2>
         </div>
 
-        @if(session('success'))
-        <div class="max-w-4xl mx-auto mb-6 p-4 rounded-lg bg-primary/10 border border-primary/30 text-primary text-sm font-display">
-            {{ session('success') }}
-        </div>
-        @endif
-
         <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
             {{-- Info --}}
             <div class="space-y-6" data-animate="fade-left">
@@ -575,28 +569,113 @@
                 </div>
             </div>
 
-            {{-- Form --}}
-            <form method="POST" action="{{ url('/contact') }}" class="space-y-4" data-animate="fade-right">
-                @csrf
-                <input type="text" name="name" placeholder="Your Name" required
-                    class="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors">
-                @error('name')<p class="text-xs text-destructive">{{ $message }}</p>@enderror
+            {{-- Form + Thank You --}}
+            <div id="contact-form-wrap" data-animate="fade-right">
+                {{-- Thank you message (hidden until submit) --}}
+                <div id="contact-success" class="hidden flex flex-col items-center justify-center gap-6 h-full text-center py-8">
+                    <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-display text-2xl font-bold text-foreground mb-2">Thank You!</h3>
+                        <p class="text-muted-foreground">Your message has been received.<br>We'll get back to you soon.</p>
+                    </div>
+                    <button onclick="contactReset()" class="text-sm text-primary hover:underline font-display">Send another message</button>
+                </div>
 
-                <input type="email" name="email" placeholder="Your Email" required
-                    class="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors">
-                @error('email')<p class="text-xs text-destructive">{{ $message }}</p>@enderror
-
-                <textarea name="message" rows="4" placeholder="Your Message" required
-                    class="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors resize-none"></textarea>
-                @error('message')<p class="text-xs text-destructive">{{ $message }}</p>@enderror
-
-                <button type="submit"
-                    class="w-full px-8 py-3 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-sm tracking-wide hover:brightness-110 transition-all glow-gold">
-                    Send Message
-                </button>
-            </form>
+                {{-- Contact form --}}
+                <form id="contact-form" class="space-y-4">
+                    @csrf
+                    <div>
+                        <input type="text" name="name" id="cf-name" placeholder="Your Name" required
+                            class="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors">
+                        <p id="err-name" class="hidden mt-1 text-xs text-destructive"></p>
+                    </div>
+                    <div>
+                        <input type="email" name="email" id="cf-email" placeholder="Your Email" required
+                            class="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors">
+                        <p id="err-email" class="hidden mt-1 text-xs text-destructive"></p>
+                    </div>
+                    <div>
+                        <textarea name="message" id="cf-message" rows="4" placeholder="Your Message" required
+                            class="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors resize-none"></textarea>
+                        <p id="err-message" class="hidden mt-1 text-xs text-destructive"></p>
+                    </div>
+                    <p id="err-general" class="hidden text-xs text-destructive"></p>
+                    <button type="submit" id="cf-btn"
+                        class="w-full px-8 py-3 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-sm tracking-wide hover:brightness-110 transition-all glow-gold flex items-center justify-center gap-2">
+                        <span id="cf-btn-text">Send Message</span>
+                        <svg id="cf-spinner" class="hidden animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/></svg>
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 </section>
+
+<script>
+(function () {
+    var form    = document.getElementById('contact-form');
+    var success = document.getElementById('contact-success');
+    var btn     = document.getElementById('cf-btn');
+    var btnText = document.getElementById('cf-btn-text');
+    var spinner = document.getElementById('cf-spinner');
+
+    function setError(field, msg) {
+        var el = document.getElementById('err-' + field);
+        if (!el) return;
+        if (msg) { el.textContent = msg; el.classList.remove('hidden'); }
+        else     { el.textContent = ''; el.classList.add('hidden'); }
+    }
+    function clearErrors() {
+        ['name','email','message','general'].forEach(function(f){ setError(f,''); });
+    }
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        clearErrors();
+        btn.disabled = true;
+        btnText.textContent = 'Sending…';
+        spinner.classList.remove('hidden');
+
+        var data = new FormData(form);
+
+        fetch('{{ url("/contact") }}', {
+            method: 'POST',
+            headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' },
+            body: data,
+        })
+        .then(function (res) { return res.json().then(function(j){ return {ok: res.ok, status: res.status, json: j}; }); })
+        .then(function (r) {
+            btn.disabled = false;
+            btnText.textContent = 'Send Message';
+            spinner.classList.add('hidden');
+
+            if (r.ok) {
+                form.classList.add('hidden');
+                success.classList.remove('hidden');
+            } else if (r.status === 422 && r.json.errors) {
+                var errs = r.json.errors;
+                Object.keys(errs).forEach(function(k){ setError(k, errs[k][0]); });
+            } else {
+                setError('general', r.json.message || 'Something went wrong. Please try again.');
+            }
+        })
+        .catch(function () {
+            btn.disabled = false;
+            btnText.textContent = 'Send Message';
+            spinner.classList.add('hidden');
+            setError('general', 'Network error. Please try again.');
+        });
+    });
+
+    window.contactReset = function () {
+        form.reset();
+        clearErrors();
+        success.classList.add('hidden');
+        form.classList.remove('hidden');
+    };
+})();
+</script>
 
 @endsection
