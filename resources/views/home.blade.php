@@ -44,10 +44,10 @@
             </div>
         </div>
 
-        {{-- Right: Video Box — fills available height --}}
-        <div class="hidden lg:flex justify-end items-center h-full">
-            <div class="relative rounded-3xl overflow-hidden shadow-2xl glow-gold"
-                 style="height: calc(100vh - 110px); max-height: 86vh; width: auto; aspect-ratio: 3/4;"
+        {{-- Right: Video Box --}}
+        <div class="flex justify-center lg:justify-end items-center h-full">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl glow-gold w-full max-w-sm lg:w-auto"
+                 style="aspect-ratio: 3/4; max-height: 55vw; max-height: clamp(260px, 55vw, 86vh);"
                  data-hero="scale" data-delay="0.3">
                 <video src="{{ asset('videos/hero-koi-video.mp4') }}" autoplay loop muted playsinline class="w-full h-full object-cover"></video>
                 <div class="absolute bottom-6 right-6 flex items-center gap-2 bg-background/60 backdrop-blur-md rounded-full px-4 py-2 cursor-pointer hover:bg-background/80 transition-colors">

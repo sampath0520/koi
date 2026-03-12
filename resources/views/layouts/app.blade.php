@@ -11,9 +11,32 @@
 
     {{-- Navbar --}}
     <style>
-        #site-logo { height: 20.5rem; margin-top: 46px; margin-left: -114px; width: auto; }
-        @@media (max-width: 767px) {
-            #site-logo { height: 10rem; margin-top: 23px; margin-left: -57px; }
+        #site-logo {
+            height: 3rem;
+            margin-top: 6px;
+            margin-left: -16px;
+            width: auto;
+        }
+        @@media (min-width: 480px) {
+            #site-logo {
+                height: 3.5rem;
+                margin-top: 8px;
+                margin-left: -20px;
+            }
+        }
+        @@media (min-width: 768px) {
+            #site-logo {
+                height: 4.5rem;
+                margin-top: 12px;
+                margin-left: -30px;
+            }
+        }
+        @@media (min-width: 1024px) {
+            #site-logo {
+                height: 5.5rem;
+                margin-top: 16px;
+                margin-left: -40px;
+            }
         }
     </style>
     <nav class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border overflow-visible">
