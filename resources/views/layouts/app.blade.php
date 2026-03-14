@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Koi Majesty – Premium Koi Pond Products')</title>
-    <meta name="description" content="@yield('meta_description', 'Making premium koi pond care affordable and effortless. Experience the beauty of natural balance.')">
+    <title>@yield('title', 'Majesty – Premium Pond Products')</title>
+    <meta name="description" content="@yield('meta_description', 'Making premium pond care affordable and effortless. Experience the beauty of natural balance.')">
+    <link rel="icon" type="image/png" href="{{ asset('images/koi_logo.png') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-background text-foreground font-body antialiased">
@@ -42,7 +43,7 @@
     <nav class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border overflow-visible">
         <div class="container mx-auto flex items-center justify-between px-4 overflow-visible" style="height:3rem;">
             <a href="{{ url('/') }}" class="flex items-center gap-2 select-none overflow-visible">
-                <img id="site-logo" src="{{ asset('images/koi_logo.png') }}" alt="Koi Majesty">
+                <img id="site-logo" src="{{ asset('images/koi_logo.png') }}" alt="Majesty">
             </a>
 
             {{-- Desktop nav --}}
@@ -88,7 +89,7 @@
     {{-- Footer --}}
     <footer class="py-8 border-t border-border bg-background">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p class="text-sm text-muted-foreground">© {{ date('Y') }} Koi Majesty. All rights reserved.</p>
+            <p class="text-sm text-muted-foreground">© {{ date('Y') }} Majesty. All rights reserved.</p>
             <div class="flex gap-4 text-sm text-muted-foreground">
                 <a href="{{ url('/') }}" class="hover:text-primary transition-colors">Home</a>
                 <a href="{{ url('/blog') }}" class="hover:text-primary transition-colors">Blog</a>

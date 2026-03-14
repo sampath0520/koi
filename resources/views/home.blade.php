@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Koi Majesty – Premium Koi Pond Products')
+@section('title', 'Majesty – Premium Pond Products')
 
 @section('content')
 
@@ -12,7 +12,7 @@
         {{-- Left: Typography --}}
         <div class="flex flex-col gap-4 lg:pr-8">
             <p class="text-xs uppercase tracking-[0.35em] text-primary font-display" data-hero data-delay="0">
-                Premium Koi Pond Products
+                Premium Pond Products
             </p>
 
             <h1 class="font-display text-5xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] font-bold leading-[1.1] tracking-tight pb-1" data-hero data-delay="0.15">
@@ -21,7 +21,7 @@
             </h1>
 
             <p class="text-muted-foreground max-w-md text-base md:text-lg font-body leading-relaxed" data-hero data-delay="0.3">
-                Making premium koi pond care affordable and effortless.
+                Making premium pond care affordable and effortless.
                 Experience the beauty of natural balance.
             </p>
 
@@ -65,21 +65,21 @@
         <div class="text-center mb-16" data-animate>
             <p class="text-sm uppercase tracking-[0.3em] text-primary mb-3 font-display">About Us</p>
             <h2 class="font-display text-3xl md:text-5xl font-bold text-foreground">
-                The Art of <span class="text-gradient-gold">Koi Keeping</span>
+                The Art of <span class="text-gradient-gold">Pond Keeping</span>
             </h2>
         </div>
 
         <div class="grid lg:grid-cols-2 gap-12 items-center">
             <div class="relative rounded-2xl overflow-hidden glow-gold" data-animate="fade-left">
-                <img src="{{ asset('images/about-pond.jpg') }}" alt="Beautiful koi pond garden" class="w-full h-80 lg:h-[480px] object-cover">
+                <img src="{{ asset('images/about-pond.jpg') }}" alt="Beautiful pond garden" class="w-full h-80 lg:h-[480px] object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent"></div>
             </div>
 
             <div class="space-y-6">
                 @php
                 $cards = [
-                    ['icon' => 'eye', 'title' => 'Our Vision', 'text' => 'Turn your koi keeping dream into reality. We\'re here to make your dream pond affordable to maintain in premium quality with simple & easy solutions.'],
-                    ['icon' => 'target', 'title' => 'Our Mission', 'text' => 'We deliver simple, effective and affordable solutions that make premium pond care effortless, empowering every koi keeper with the tools needed for a thriving, beautiful pond.'],
+                    ['icon' => 'eye', 'title' => 'Our Vision', 'text' => 'Turn your pond keeping dream into reality. We\'re here to make your dream pond affordable to maintain in premium quality with simple & easy solutions.'],
+                    ['icon' => 'target', 'title' => 'Our Mission', 'text' => 'We deliver simple, effective and affordable solutions that make premium pond care effortless, empowering every pond keeper with the tools needed for a thriving, beautiful pond.'],
                     ['icon' => 'leaf', 'title' => 'Nature First', 'text' => 'We develop symbiotic relationships among all parts in the system, making pond care more nature-friendly and sustainable for the long term.'],
                 ];
                 @endphp
@@ -499,7 +499,7 @@
         <div class="text-center mb-16" data-animate>
             <p class="text-sm uppercase tracking-[0.3em] text-primary mb-3 font-display">Our Products</p>
             <h2 class="font-display text-3xl md:text-5xl font-bold text-foreground">
-                Everything for Your <span class="text-gradient-gold">Koi Pond</span>
+                Everything for Your <span class="text-gradient-gold">Pond</span>
             </h2>
         </div>
 
@@ -545,7 +545,7 @@
             {{-- Info --}}
             <div class="space-y-6" data-animate="fade-left">
                 <p class="text-muted-foreground leading-relaxed">
-                    Ready to start your koi keeping journey? We'd love to hear from you. Reach out for product inquiries, pond consultation, or any questions.
+                    Ready to start your pond keeping journey? We’d love to hear from you. Reach out for product inquiries, pond consultation, or any questions.
                 </p>
                 <div class="space-y-4">
                     <div class="flex items-center gap-4">

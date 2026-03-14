@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '404 – Page Not Found – Koi Majesty')
+@section('title', '404 – Page Not Found – Nexrora')
 
 @section('content')
 <div class="min-h-screen bg-background flex items-center justify-center px-4">

@@ -1,14 +1,23 @@
 @extends('layouts.app')
 
-@section('title', $categoryLabel . ' – Koi Majesty')
+@section('title', $categoryLabel . ' – Majesty')
 @section('meta_description', $categoryDescription)
 
 @section('content')
 <div class="min-h-screen bg-background">
     {{-- Hero Banner --}}
     <section class="relative pt-16">
+        @php
+        $bannerImages = [
+            'pond_pumps'    => 'product-pumps.jpg',
+            'pond_aerators' => 'product-aerators.jpg',
+            'pond_filters'  => 'product-filters.jpg',
+            'accessories'   => 'product-accessories.jpg',
+        ];
+        $bannerImg = $bannerImages[$category] ?? 'product-pumps.jpg';
+        @endphp
         <div class="h-64 md:h-80 relative overflow-hidden">
-            <img src="{{ asset('images/product-' . str_replace('_', '-', $category) . '.jpg') }}" alt="{{ $categoryLabel }}" class="w-full h-full object-cover">
+            <img src="{{ asset('images/' . $bannerImg) }}" alt="{{ $categoryLabel }}" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-koi-deep/70"></div>
             <div class="absolute inset-0 flex items-center justify-center">
                 <div class="text-center">

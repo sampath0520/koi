@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login – Koi Majesty</title>
+    <title>Admin Login – Nexrora</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="icon" type="image/png" href="{{ asset('images/koi_logo.png') }}">
 </head>
 <body class="min-h-screen bg-background text-foreground flex items-center justify-center p-4">
 
@@ -18,7 +19,7 @@
         {{-- Logo --}}
         <div class="flex flex-col items-center mb-8">
             <a href="{{ url('/') }}" class="flex items-center gap-3 mb-2">
-                <img src="{{ asset('images/koi_logo.png') }}" alt="Koi Majesty" class="h-20 w-auto">
+                <img src="{{ asset('images/koi_logo.png') }}" alt="Majesty" class="h-20 w-auto">
             </a>
             <p class="text-sm text-muted-foreground font-display tracking-wide">Admin Panel</p>
         </div>
@@ -43,7 +44,7 @@
                         id="email" type="email" name="email"
                         value="{{ old('email') }}"
                         required autofocus autocomplete="email"
-                        placeholder="admin@koimajesty.com"
+                        placeholder="admin@example.com"
                         class="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-sm @error('email') border-destructive @enderror"
                     >
                 </div>
@@ -79,13 +80,13 @@
         </div>
 
         {{-- Credentials hint (remove in production) --}}
-        <div class="mt-4 p-3 rounded-lg bg-card/50 border border-border/50 text-center">
+        {{-- <div class="mt-4 p-3 rounded-lg bg-card/50 border border-border/50 text-center">
             <p class="text-xs text-muted-foreground font-display">
-                Default: <span class="text-primary">admin@koimajesty.com</span>
+                Default: <span class="text-primary">admin@example.com</span>
                 &nbsp;/&nbsp;
                 <span class="text-primary">Admin@1234</span>
             </p>
-        </div>
+        </div> --}}
 
         <p class="mt-4 text-center text-xs text-muted-foreground">
             <a href="{{ url('/') }}" class="hover:text-primary transition-colors">← Back to website</a>

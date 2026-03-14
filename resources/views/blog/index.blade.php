@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
-@section('title', 'Koi Pond Tips & Guides – Koi Majesty')
-@section('meta_description', 'Expert advice on keeping your koi healthy and your pond beautiful.')
+@section('title', 'Pond Tips & Guides – Majesty')
+@section('meta_description', 'Expert advice on keeping your pond healthy and your fish beautiful.')
 
 @section('content')
 <div class="min-h-screen bg-background">
     <section class="pt-24 pb-16 container mx-auto px-4">
         <div class="text-center mb-12">
             <p class="text-sm uppercase tracking-[0.3em] text-primary mb-3 font-display">Our Blog</p>
-            <h1 class="font-display text-3xl md:text-5xl font-bold text-gradient-gold">Koi Pond Tips & Guides</h1>
-            <p class="text-muted-foreground mt-3 max-w-lg mx-auto">Expert advice on keeping your koi healthy and your pond beautiful.</p>
+            <h1 class="font-display text-3xl md:text-5xl font-bold text-gradient-gold">Pond Tips & Guides</h1>
+            <p class="text-muted-foreground mt-3 max-w-lg mx-auto">Expert advice on keeping your pond healthy and your fish beautiful.</p>
         </div>
 
         @if($posts->isEmpty())

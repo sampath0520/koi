@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel – Koi Majesty</title>
+    <title>Admin Panel – Majesty</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="icon" type="image/png" href="{{ asset('images/koi_logo.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.js"></script>
     <style>
@@ -33,7 +34,7 @@
     <header class="border-b border-border bg-card/50 backdrop-blur-lg sticky top-0 z-50">
         <div class="container mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <img src="{{ asset('images/koi_logo.png') }}" alt="Koi Majesty" class="h-14 w-auto">
+                <img src="{{ asset('images/koi_logo.png') }}" alt="Majesty" class="h-14 w-auto">
                 <span class="font-display font-bold text-foreground">Admin Panel</span>
             </div>
             <div class="flex items-center gap-3">
@@ -336,7 +337,7 @@
                     </div>
                     <div class="space-y-1">
                         <label class="text-sm font-medium text-foreground">Subtitle</label>
-                        <input name="subtitle" placeholder="e.g. Premium Koi Collection" class="w-full px-3 py-2 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary text-sm">
+                        <input name="subtitle" placeholder="e.g. Premium Collection" class="w-full px-3 py-2 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary text-sm">
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <div class="space-y-1">
@@ -610,7 +611,7 @@
             </div>
             <div class="space-y-1">
                 <label class="text-sm font-medium text-foreground">Subtitle</label>
-                <input name="subtitle" value="${esc(g.subtitle)}" placeholder="e.g. Premium Koi Collection" class="w-full px-3 py-2 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary text-sm">
+                <input name="subtitle" value="${esc(g.subtitle)}" placeholder="e.g. Premium Collection" class="w-full px-3 py-2 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary text-sm">
             </div>
             <div class="grid grid-cols-2 gap-4">
                 <div class="space-y-1">
